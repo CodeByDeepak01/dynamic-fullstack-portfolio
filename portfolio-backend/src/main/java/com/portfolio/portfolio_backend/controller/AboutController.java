@@ -9,7 +9,6 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
 public class AboutController {
 
     private final AboutService aboutService;
