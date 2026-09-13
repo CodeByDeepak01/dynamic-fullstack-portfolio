@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.dark-theme {
+  --bg-primary: #0f172a;
+  --bg-secondary: #111827;
+
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+}
+
+.light-theme {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    #38bdf8,
+    #0ea5e9
+  );
+
+  z-index: 9999;
+}

@@ -1,0 +1,39 @@
+# =========================
+# Frontend - Node
+# =========================
+Portfolio-main/node_modules/
+Portfolio-main/dist/
+
+# Environment variables
+Portfolio-main/.env
+Portfolio-main/.env.local
+Portfolio-main/.env.production
+Portfolio-main/.env.development
+
+# =========================
+# Backend - Java / Maven
+# =========================
+portfolio-backend/target/
+portfolio-backend/uploads/
+
+# =========================
+# IDE
+# =========================
+.idea/
+*.iml
+.vscode/
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
