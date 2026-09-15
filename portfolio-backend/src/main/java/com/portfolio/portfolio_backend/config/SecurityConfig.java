@@ -27,11 +27,14 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http)
-            throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http
+    ) throws Exception {
 
         http
                 .csrf(csrf -> csrf.disable())
+
+                .cors(cors -> {})
 
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(
@@ -41,21 +44,25 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
 
+                        // Login is public
                         .requestMatchers("/api/auth/login")
                         .permitAll()
 
+                        // CORS preflight
                         .requestMatchers(
                                 HttpMethod.OPTIONS,
                                 "/**"
                         )
                         .permitAll()
 
+                        // All GET APIs are public
                         .requestMatchers(
                                 HttpMethod.GET,
                                 "/api/**"
                         )
                         .permitAll()
 
+                        // Write operations require JWT
                         .requestMatchers(
                                 HttpMethod.POST,
                                 "/api/**"

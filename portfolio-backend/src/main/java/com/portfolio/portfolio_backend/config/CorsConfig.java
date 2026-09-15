@@ -3,8 +3,8 @@ package com.portfolio.portfolio_backend.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
 
 import java.util.List;
 
@@ -12,16 +12,16 @@ import java.util.List;
 public class CorsConfig {
 
     @Bean
-    public CorsFilter corsFilter() {
+    public CorsConfigurationSource corsConfigurationSource() {
 
-        CorsConfiguration config = new CorsConfiguration();
+        CorsConfiguration configuration = new CorsConfiguration();
 
-        config.setAllowedOrigins(List.of(
+        configuration.setAllowedOrigins(List.of(
                 "http://localhost:5173",
                 "https://deepak-portfolio-jcg2.onrender.com"
         ));
 
-        config.setAllowedMethods(List.of(
+        configuration.setAllowedMethods(List.of(
                 "GET",
                 "POST",
                 "PUT",
@@ -29,15 +29,18 @@ public class CorsConfig {
                 "OPTIONS"
         ));
 
-        config.setAllowedHeaders(List.of("*"));
+        configuration.setAllowedHeaders(List.of("*"));
 
-        config.setAllowCredentials(true);
+        configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
 
-        source.registerCorsConfiguration("/**", config);
+        source.registerCorsConfiguration(
+                "/**",
+                configuration
+        );
 
-        return new CorsFilter(source);
+        return source;
     }
 }
